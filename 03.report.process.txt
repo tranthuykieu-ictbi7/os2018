@@ -1,0 +1,43 @@
+tranthuykieu@tranthuykieu-VirtualBox ~ $ ps man
+  PID TTY      STAT   TIME COMMAND
+  917 tty7     -      2:59 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/ru
+    - -        Ss+    2:59 -
+ 1048 tty1     -      0:00 /sbin/agetty --noclear tty1 linux
+    - -        Ss+    0:00 -
+ 4469 pts/0    -      0:00 bash
+    - -        Ss     0:00 -
+ 4498 pts/0    -      0:00 ps man
+    - -        R+     0:00 -
+
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ gnome-calculator &
+[1] 4499
+
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ ps ax | grep gnome-calculator
+ 4499 pts/0    Sl     0:00 gnome-calculator
+ 4504 pts/0    S+     0:00 grep --color=auto gnome-calculator
+
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ cat /proc/4499/status
+CapBnd:	0000003fffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+Mems_allowed:	1
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	216
+nonvoluntary_ctxt_switches:	351
+tranthuykieu@tranthuykieu-VirtualBox ~ $ kill -STOP 4499
+
+[1]+  Stopped                 gnome-calculator
+
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ kill -CONT 4499
+
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ kill -KILL 4499
+[1]+  Killed                  gnome-calculator
+
