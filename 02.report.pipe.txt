@@ -1,0 +1,23 @@
+tranthuykieu@tranthuykieu-VirtualBox ~ $ cd /proc
+
+tranthuykieu@tranthuykieu-VirtualBox /proc $ ls | grep list
+timer_list
+
+tranthuykieu@tranthuykieu-VirtualBox /proc $ wc -l /etc/passwd
+42 /etc/passwd
+
+tranthuykieu@tranthuykieu-VirtualBox /proc $ free
+              total        used        free      shared  buff/cache   available
+Mem:        1023208      375792      211708       15224      435708      470532
+Swap:       1045500           0     1045500
+
+
+tranthuykieu@tranthuykieu-VirtualBox /proc $ grep -m 1 'cpu cores' /proc/cpuinfocpu cores	: 1
+
+tranthuykieu@tranthuykieu-VirtualBox /proc $ cd
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ cd Pictures
+
+tranthuykieu@tranthuykieu-VirtualBox ~/Pictures $ find
+.
+./dir
