@@ -14,13 +14,13 @@ int main(){
    }
 
     if (pid1 == 0){
-        printf("I'm child after forl(), launching tree -h\n");
-        char *args[] = {"tree", "-h", NULL};
-        execvp("tree", args);
-        printf("Finished launching tree -h \n");
+        printf("I'm child after forl(), launching free -h\n");
+        char *args[] = {"free", "-h", NULL};
+        execvp("free", args);
+        printf("Finished launching free -h \n");
     }
     else 
-    printf("After fork(), the parent is: %d, the child is: %d", pid0, pid1);
+    printf("After fork(), child contains ps: %d, child contains free: %d", pid0, pid1);
     return 0;   
         
 }
