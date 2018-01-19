@@ -1,0 +1,13 @@
+tranthuykieu@tranthuykieu-VirtualBox ~ $ cat /proc/sched_debug | awk '/systemd/ {print$4; exit}'
+2452
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ ps -e
+  PID TTY          TIME CMD
+    1 ?        00:00:02 systemd
+
+tranthuykieu@tranthuykieu-VirtualBox ~ $ cat /proc/1/sched | awk '/switch/ {print$3}'
+2453
+1194
+1259
+
+
