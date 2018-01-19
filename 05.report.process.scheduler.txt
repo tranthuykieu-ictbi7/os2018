@@ -9,5 +9,3 @@ tranthuykieu@tranthuykieu-VirtualBox ~ $ cat /proc/1/sched | awk '/switch/ {prin
 2453
 1194
 1259
-
-
