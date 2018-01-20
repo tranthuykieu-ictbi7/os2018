@@ -1,0 +1,4 @@
+tranthuykieu@tranthuykieu-VirtualBox ~/Desktop/os2018 $ ps -o nlwp 1882
+NLWP
+  50
+
