@@ -2,6 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include<pthread.h>
+#include<semaphore.h>
+#include<unistd.h>
 
 
 #define BUFFER_SIZE 10
@@ -19,13 +21,26 @@ typedef struct{
 item buffer[BUFFER_SIZE];
 int first = 0;
 int last = 0;
+sem_t m;
+int m = 0;
+
+void wait(int S){
+    while(S<=0);
+    S--;
+}
+
+void signal(int S){
+    S++;
+}
 
 void produce(item *i){
     while ((first + 1) % BUFFER_SIZE == last){
         // do thing -- no free buffer item
     }
+    wait(m);
     memcpy(&buffer[first], i, sizeof(item));
     first = (first + 1) % BUFFER_SIZE;
+    signal(m);
 }
 
 item *consume(){
@@ -33,8 +48,10 @@ item *consume(){
     while (first == last){
         // do nothing -- nothing to consume
     }
+    wait(m);
     memcpy(i, &buffer[last], sizeof(item));
     last = (last + 1) % BUFFER_SIZE;
+    signal(m);
     return i;
 }
 
