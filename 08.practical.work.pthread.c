@@ -38,7 +38,7 @@ item *consume(){
     return i;
 }
 
-int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_rountine(void*)), void *arg);
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_rountine) (void*), void *arg);
 
 void *threadFunction_produce(void *param){
     item *tea = (item*) malloc(sizeof(item));
@@ -57,19 +57,22 @@ void *threadFunction_produce(void *param){
     candy->unit = 'c';
 
     produce(tea);
-    printf("Tea is ready");
+    printf("Tea is ready\n");
+    printf("First: %d, last: %d, \n\n", first, last);
     
     produce(ice);
     printf("Ice is ready");
-
+    printf("First: %d, last: %d, \n\n", first, last);
+    
     produce(candy);
     printf("Candy is ready");
-
+    printf("First: %d, last: %d, \n\n", first, last);
 }
 
 void *threadFunction_consume(void *param){
     item *order1 = consume();
     printf("Order tea = %c \n\n", order1->type);
+    printf("First: %d, last: %d, \n\n", first, last);
     
     item *order2 = consume();
     printf("Order ice = %c \n\n", order2->type);
@@ -102,11 +105,18 @@ int main(){
     printf("\nHello, welcome to #apieceofcake :)) \n\n");
     produce(tiramisu);
     printf("Tiramisu is ready\n\n");
+    printf("First: %d, last: %d, \n\n", first, last);
+    
     produce(coffe);
     printf("Coffe is ready, too\n\n");
+    printf("First: %d, last: %d, \n\n", first, last);
 
     item *eat = consume();
     printf("Delivered Tiramisu = %c\n\n", eat->type);
+    printf("First: %d, last: %d, \n\n", first, last);
+    
+    pthread_join(produce_id, NULL);
+    pthread_join(consume_id, NULL);
 
     return 0;
 }
